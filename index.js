@@ -2,13 +2,20 @@
 const express = require("express");
 const port = 8000;
 const app = express();
+const expressLayouts = require("express-ejs-layouts");
 
 // connection to database(import)
 const db = require("./config/mongoose");
 
+// use express ejs layouts
+app.use(expressLayouts);
+app.set("layout extractScripts", true);
+
 // seetting up ejs view engine
 app.set('view engine', 'ejs');
 app.set('views', './views');
+
+
 
 // set rbase route
 app.use("/", require("./routes/index"));
